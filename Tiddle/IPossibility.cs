@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
-namespace Tiddle
+namespace Tiddle.Definition
 {
-    class Program
+    interface IPossibility
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        
     }
 }
