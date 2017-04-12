@@ -56,15 +56,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\empty.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>empty.txt</LastGenOutput>
-    </Content>
-    <Content Include="Resources\empty.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>empty.tt</DependentUpon>
-    </Content>
+    <Content Include="Resources\1.xml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
