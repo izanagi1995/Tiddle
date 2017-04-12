@@ -54,8 +54,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="References\" />
+    <Content Include="Resources\empty.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>empty.txt</LastGenOutput>
+    </Content>
+    <Content Include="Resources\empty.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>empty.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
