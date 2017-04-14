@@ -1,70 +1,46 @@
 ﻿<?xml version="1.0"?>
 <Chapter id="1" name="Tavern">
   <Step id="WakeUp">
-    <Days>
-      0
-    </Days>
-    <Goodness>
-      0
-    </Goodness>
-    <Badness>
-      0
-    </Badness>
-    <Result>What am I doign here ?? My head... I have to do something.</Result>
+    <Days>0</Days>
+    <Goodness>0</Goodness>
+    <Badness>0</Badness>
+    <Result></Result>
+    <Label>What am I doign here ?? My head... I have to do something.</Label>
+    <Result></Result>
     <Possibilities>
       <Step id="Work">
-        <Days>
-          1
-        </Days>
-        <Goodness>
-          100
-        </Goodness>
-        <Badness>
-          0
-        </Badness>
+        <Days>1</Days>
+        <Goodness>100</Goodness>
+        <Badness>0</Badness>
         <Result>Good work ! See you tomorrow... maybe!</Result>
+        <Label>Work to pay the room...</Label>
         <Possibilities>
-          <Check operator="greater" prop="Goodness" val="300" else="WakeUp" then="End"/>
+          <Check type="int" operator="greater" prop="Goodness" val="300" else="WakeUp" then="End"/>
         </Possibilities>
       </Step>
       <Step id="Infos">
-        <Days>
-          0.5
-        </Days>
-        <Goodness>
-          0
-        </Goodness>
-        <Badness>
-          0
-        </Badness>
-        <Result>You need informations to know what you're doing here.</Result>
+        <Days>0.5</Days>
+        <Goodness>0</Goodness>
+        <Badness>0</Badness>
+        <Result></Result>
+        <Label>You need informations to know what you're doing here.</Label>
         <Possibilities>
           <Step id="StrangeMen">
-            <Days>
-              0.5
-            </Days>
-            <Goodness>
-              0
-            </Goodness>
-            <Badness>
-              0
-            </Badness>
-            <Inventory id="Sword">true</Inventory>
+            <Days>0.5</Days>
+            <Goodness>0</Goodness>
+            <Badness>0</Badness>
+            <SaveObject id="inventory.sword">true</SaveObject>
+            <Label>Go to see the strange man</Label>
             <Result>I see you got some troubles, take my sword!</Result>
             <Possibilities>
               <GoBack id="WakeUp" />
             </Possibilities>
           </Step>
           <Step id="WiseMen">
-            <Days>
-              0.5
-            </Days>
-            <Goodness>
-              0
-            </Goodness>
-            <Badness>
-              0
-            </Badness>
+            <Days>0.5</Days>
+            <Goodness>0</Goodness>
+            <Badness>0</Badness>
+            <Label>Go to see the wise man</Label>
             <Result>You should work to pay your debt!</Result>
             <Possibilities>
               <GoBack id="WakeUp" />
@@ -73,27 +49,21 @@
         </Possibilities>
       </Step>
       <Step id="Flee">
-        <Days>
-          0
-        </Days>
-        <Goodness>
-          0
-        </Goodness>
-        <Badness>
-          10
-        </Badness>
+        <Days>0</Days>
+        <Goodness>0</Goodness>
+        <Badness>10</Badness>
+        <Label>Try to flee</Label>
         <Result>BodyMan: Are you a weak men ?</Result>
         <Possibilities>
-          <Check operator="equals" prop="inventory.sword" val="true" then="End" else="WakeUp" />
-          <Check operator="greater" prop="Badness" val="30" then="End" else="WakeUp" />
+          <Check type="bool" operator="equals" prop="inventory.sword" val="true" then="End" else="WakeUp" />
+          <Check type="int" operator="greater" prop="Badness" val="30" then="End" else="WakeUp" />
         </Possibilities>
       </Step>
     </Possibilities>
   </Step>
   <DefaultSave>
-    <Inventory>
-      <Object id="sword">false</Object>
-
-    </Inventory>
+    <SaveObject id="inventory">
+      <SaveObject id="sword">false</SaveObject>
+    </SaveObject>
   </DefaultSave>
 </Chapter>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tiddle.Definition
 {
-    class Check
+    class Check:IPossibility
     {
 
         public string Operator { get {
@@ -30,7 +30,7 @@ namespace Tiddle.Definition
             }
         }
 
-        public Step Then
+        public string Then
         {
             get
             {
@@ -38,7 +38,7 @@ namespace Tiddle.Definition
             }
         }
 
-        public Step Else
+        public string Else
         {
             get
             {
@@ -46,17 +46,52 @@ namespace Tiddle.Definition
             }
         }
 
+        public string Type
+        {
+            get
+            {
+                return _type;
+            }
+        }
+
         private string _operator;
         private string _prop;
         private string _val;
-        private Step _then;
-        private Step _else;
-        public Check(string op, string prop, string val, string then, string els) {
+        private string _then;
+        private string _else;
+        private string _type;
+
+        public Check(string op, string type, string prop, string val, string then, string els) {
+            this._type = type;
             this._operator = op;
             this._prop = prop;
             this._val = val;
-            this._then = null;
-            this._else = null;
+            this._then = then;
+            this._else = els;
+        }
+
+        internal string Resolve(dynamic value)
+        {
+            switch (this.Type)
+            {
+                
+                case "int":
+                    if (!(value is int))
+                        throw new InvalidOperationException("value is not int");
+                    int i = (int)value;
+                    if(i > int.Parse(this.Value))
+                        return this.Then;
+                    else
+                        return this.Else;
+                case "bool":
+                    bool b = bool.Parse(value);
+                    if (b == bool.Parse(this.Value))
+                        return this.Then;
+                    else
+                        return this.Else;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }
