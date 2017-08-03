@@ -16,7 +16,10 @@ namespace Tiddle
             bool chapterDone = false;
 
             Player p = new Player("Player");
-            Chapter one = Chapter.Parse(@"C:\Users\VM-Win7\Documents\Visual Studio 2017\Projects\Tiddle\Tiddle\Resources\1.xml");
+
+            //
+
+            Chapter one = Chapter.Parse(@"..\Resources\1.xml");
             one.Player = p;
             
             Console.WriteLine(one.Step.Label);
@@ -24,6 +27,8 @@ namespace Tiddle
             Dictionary<string, Step> index = buildIndex(currentStep);
             while (!chapterDone)
             {
+                Console.Clear()
+                    ;
                 Console.BackgroundColor = ConsoleColor.Black;
                 one.Player.Days += currentStep.Days;
                 one.Player.Goodness += currentStep.Goodness;
